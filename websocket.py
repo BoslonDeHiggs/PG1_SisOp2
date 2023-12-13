@@ -47,7 +47,7 @@ async def chat(websocket, sessions):
     try:
         async for message in websocket:
             for socket in sessions.values():
-                if socket != websocket:
+                if socket == websocket:
                     print("Message sent:", remote, message)
                     await socket.send(message)
     finally:
